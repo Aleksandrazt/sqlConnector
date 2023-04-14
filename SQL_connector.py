@@ -13,12 +13,15 @@ def get_data_from_db(request: str, db: str, head: list):
     :param db: name of database as str
     :return: result of request as list
     """
+    print(request)
     if DB_TYPES[db] == 'mysql':
         cnx = mysql.connector.connect(**ALL_POSSIBLE_CONFIGS[db])
     elif DB_TYPES[db] == 'sqlite':
-        cnx = sqlite3.connect(ALL_POSSIBLE_CONFIGS[db])  # path to db in dict
+        cnx = sqlite3.connect(**ALL_POSSIBLE_CONFIGS[db])
+        request = request.replace(f'{db}.', '')
     else:
         cnx = psycopg2.connect(**ALL_POSSIBLE_CONFIGS[db])  # database, user, password, host, port
+        request = request.replace(f'{db}.', '')
     cursor = cnx.cursor()
     cursor.execute(request)
     result = cursor.fetchall()

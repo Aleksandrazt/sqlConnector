@@ -86,3 +86,11 @@ huge_data_test = ['select `db7.weight.weight`, `db6.height.height` FROM `db7.wei
                   'select * FROM `db7.weight`',
                   'select * FROM `db7.weight` WHERE `db7.weight.weight`<100'
                   ]
+test_compatibility = ['SELECT `db1.books.name` FROM `db1.books` WHERE `db1.books.author` <6',
+                      'SELECT `db8.books.book_name` FROM `db8.books` WHERE `db8.books.book_col` between 100 and 400;',
+                      "SELECT `db9.authors.name` FROM `db9.authors` WHERE `db9.authors.country` ='US'",
+                      "SELECT `db1.books.name`, `db9.authors.name`, `db8.books.book_col` FROM `db9.authors` "
+                      "JOIN `db1.books ON `db1.books.author`=`db9.authors.id` "
+                      "JOIN `db8.books ON `db1.books.name`=`db8.books.book_name` "
+                      "WHERE `db9.authors.country` ='US'"]
+

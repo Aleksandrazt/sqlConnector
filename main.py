@@ -12,7 +12,7 @@ def main(test_mode=1, in_file=1):
         file = open("output.txt", "w")
         file.close()
     if test_mode:
-        where_data = data_test.huge_data_test
+        where_data = data_test.test_compatibility
     else:
         print("Enter your SQL query")
         where_data = [input()]
@@ -54,7 +54,7 @@ def without_preprocessing(test_mode=1, in_file=1):
         file = open("output1.txt", "w")
         file.close()
     if test_mode:
-        where_data = data_test.huge_data_test
+        where_data = data_test.test_compatibility
     else:
         print("Enter your SQL query")
         where_data = [input()]

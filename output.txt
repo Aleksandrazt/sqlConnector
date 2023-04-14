@@ -1,64 +1,31 @@
-select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` ON `db7.weight.id`=`db6.height.id`
+SELECT `db1.books.name` FROM `db1.books` WHERE `db1.books.author` <6
 result
-       db7.weight.weight  db6.height.height
-0               112.9925           65.78331
-1               136.4873           71.51521
-2               153.0269           69.39874
-3               142.3354           68.21660
-4               144.2971           67.78781
-...                  ...                ...
-24995           118.0312           69.50215
-24996           120.1932           64.54826
-24997           118.2655           64.69855
-24998           132.2682           67.52918
-24999           124.8742           68.87761
-
-[25000 rows x 2 columns]
-select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` ON `db7.weight.id`=`db6.height.id` WHERE `db7.weight.weight`<100
+                            db1.books.name
+0                                Dubliners
+1  A Portrait of the Artist as a Young Man
+2                                  Ulysses
+3                           Finnegans Wake
+4                               Petersburg
+5                                  Lullaby
+6                           Adjustment Day
+7                                    Choke
+8                            The Rum Diary
+9                                Hopscotch
+SELECT `db8.books.book_name` FROM `db8.books` WHERE `db8.books.book_col` between 100 and 400;
 result
-     db7.weight.weight  db6.height.height
-0             97.90191           63.48115
-1             98.64133           65.61073
-2             84.35980           65.93895
-3             92.74955           69.13438
-4             93.99438           65.69989
-..                 ...                ...
-247           99.40058           67.50335
-248           94.40946           65.17339
-249           97.80735           66.56404
-250           97.99816           63.23624
-251           99.42378           65.11765
-
-[252 rows x 2 columns]
-select * FROM `db7.weight`
+  db8.books.book_name
+0          The Plague
+1             Lullaby
+2           Hopscotch
+3      Adjustment Day
+SELECT `db9.authors.name` FROM `db9.authors` WHERE `db9.authors.country` ='US'
 result
-       db7.weight.id  db7.weight.weight
-0                  1           112.9925
-1                  2           136.4873
-2                  3           153.0269
-3                  4           142.3354
-4                  5           144.2971
-...              ...                ...
-24995          24996           118.0312
-24996          24997           120.1932
-24997          24998           118.2655
-24998          24999           132.2682
-24999          25000           124.8742
-
-[25000 rows x 2 columns]
-select * FROM `db7.weight` WHERE `db7.weight.weight`<100
+     db9.authors.name
+0     Chuck Palahniuk
+1  Hunter S. Thompson
+SELECT `db1.books.name`, `db9.authors.name`, `db8.books.book_col` FROM `db9.authors` JOIN `db1.books ON `db1.books.author`=`db9.authors.id` JOIN `db8.books ON `db1.books.name`=`db8.books.book_name` WHERE `db9.authors.country` ='US'
 result
-     db7.weight.id  db7.weight.weight
-0               23           97.90191
-1              104           98.64133
-2              250           84.35980
-3              294           92.74955
-4              473           93.99438
-..             ...                ...
-247          24778           99.40058
-248          24836           94.40946
-249          24853           97.80735
-250          24869           97.99816
-251          24931           99.42378
-
-[252 rows x 2 columns]
+   db1.books.name db9.authors.name  db8.books.book_col
+0         Lullaby  Chuck Palahniuk                 140
+1  Adjustment Day  Chuck Palahniuk                 400
+2           Choke  Chuck Palahniuk                 500
