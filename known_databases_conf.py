@@ -1,16 +1,16 @@
-ALL_POSSIBLE_CONFIGS = {'db1': {'user': 'root', 'password': 'eelg100', 'host': 'localhost',
+ALL_POSSIBLE_CONFIGS = {'db1': {'user': 'root', 'password': '*', 'host': 'localhost',
                                 'database': 'db1', 'raise_on_warnings': True},
-                        'db2': {'user': 'root', 'password': 'eelg100', 'host': 'localhost',
+                        'db2': {'user': 'root', 'password': '*', 'host': 'localhost',
                                 'database': 'db2', 'raise_on_warnings': True},
-                        'db3': {'user': 'root', 'password': 'eelg100', 'host': 'localhost',
+                        'db3': {'user': 'root', 'password': '*', 'host': 'localhost',
                                 'database': 'db3', 'raise_on_warnings': True},
-                        'db4': {'user': 'root', 'password': 'eelg100', 'host': 'localhost',
+                        'db4': {'user': 'root', 'password': '*', 'host': 'localhost',
                                 'database': 'db4', 'raise_on_warnings': True},
-                        'db5': {'user': 'root', 'password': 'eelg100', 'host': 'localhost',
+                        'db5': {'user': 'root', 'password': '*', 'host': 'localhost',
                                 'database': 'db5', 'raise_on_warnings': True},
-                        'db6': {'user': 'root', 'password': 'eelg100', 'host': 'localhost',
+                        'db6': {'user': 'root', 'password': '*', 'host': 'localhost',
                                 'database': 'db6', 'raise_on_warnings': True},
-                        'db7': {'user': 'root', 'password': 'eelg100', 'host': 'localhost',
+                        'db7': {'user': 'root', 'password': '*', 'host': 'localhost',
                                 'database': 'db7', 'raise_on_warnings': True}
                         }
 
