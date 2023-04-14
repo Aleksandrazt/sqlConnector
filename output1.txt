@@ -1,60 +1,154 @@
-SELECT `db1.books.name`, `db1.authors.name`, `db2.books.book_col`, `db3.pick_up_points.name` FROM `db1.books` JOIN `db1.authors` ON `db1.authors.id`=`db1.books.author` JOIN `db2.books` ON  `db1.books.name`=`db2.books.book_name` JOIN `db3.point_book` ON `db3.point_book.book_id`=`db2.books.id` JOIN `db3.pick_up_points` ON `db3.point_book.point_id`=`db3.pick_up_points.id` WHERE `db2.books.book_col` < 50  and `db1.authors.name` = 'James Joyce'
-db1
-    db1.authors.id        db1.authors.name db1.authors.country  db1.books.id                           db1.books.name  db1.books.author
-0                1             James Joyce             Ireland            23                                Dubliners                 1
-1                1             James Joyce             Ireland            24  A Portrait of the Artist as a Young Man                 1
-2                1             James Joyce             Ireland            25                                  Ulysses                 1
-3                1             James Joyce             Ireland            26                           Finnegans Wake                 1
-4                2             Andrei Bely              Russia            22                               Petersburg                 2
-5                3         Chuck Palahniuk                  US            18                                  Lullaby                 3
-6                3         Chuck Palahniuk                  US            19                           Adjustment Day                 3
-7                3         Chuck Palahniuk                  US            20                                    Choke                 3
-8                4      Hunter S. Thompson                  US            21                            The Rum Diary                 4
-9                5          Julio Cortazar           Argentina            31                                Hopscotch                 5
-10               6             Victor Hugo              France            29                           Les Miserables                 6
-11               6             Victor Hugo              France            30              The Hunchback of Notre-Dame                 6
-12               7  Gabriel Garcia Marquez            Colombia            32            One Hundred Years of Solitude                 7
-13               7  Gabriel Garcia Marquez            Colombia            33              The Autumn of the Patriarch                 7
-14               7  Gabriel Garcia Marquez            Colombia            34              Love in the Time of Cholera                 7
-15               8            Albert Camus              France            27                               The Plague                 8
-16               8            Albert Camus              France            28                             The Stranger                 8
-17               9           Marcel Proust              France            35                   In Search of Lost Time                 9
-db2
-    db2.books.id                      db2.books.book_name  db2.books.book_col
-0              4                               The Plague                 100
-1              5                                  Lullaby                 140
-2              6                                Hopscotch                 120
-3              7                                    Choke                 500
-4              8                           Adjustment Day                 400
-5              9                            The Rum Diary                   0
-6             10                               Petersburg                  50
-7             11                                Dubliners                  46
-8             12  A Portrait of the Artist as a Young Man                  78
-9             13                                  Ulysses                 382
-10            14                           Finnegans Wake                  10
-11            15                             The Stranger                 324
-12            16                           Les Miserables                 765
-13            17              The Hunchback of Notre-Dame                 535
-14            18            One Hundred Years of Solitude                 464
-15            19              The Autumn of the Patriarch                 357
-16            20              Love in the Time of Cholera                 357
-17            21                   In Search of Lost Time                  48
-db3
-    db3.pick_up_points.id db3.pick_up_points.name  db3.point_book.id  db3.point_book.book_id  db3.point_book.point_id
-0                       1         Pick up point 1                  1                       4                        1
-1                       1         Pick up point 1                  2                       5                        1
-2                       1         Pick up point 1                  3                       6                        1
-3                       3         Pick up point 3                  4                       7                        3
-4                       2         Pick up point 2                  5                       8                        2
-5                       3         Pick up point 3                  6                      10                        3
-6                       2         Pick up point 2                  7                      11                        2
-7                       1         Pick up point 1                  8                      12                        1
-8                       2         Pick up point 2                  9                      13                        2
-9                       3         Pick up point 3                 10                      14                        3
-10                      2         Pick up point 2                 11                      15                        2
-11                      2         Pick up point 2                 12                      16                        2
-12                      1         Pick up point 1                 13                      17                        1
-13                      2         Pick up point 2                 14                      18                        2
-14                      2         Pick up point 2                 15                      19                        2
-15                      3         Pick up point 3                 16                      20                        3
-16                      1         Pick up point 1                 17                      21                        1
+select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` ON `db7.weight.id`=`db6.height.id`
+db7
+       db7.weight.id  db7.weight.weight
+0                  1           112.9925
+1                  2           136.4873
+2                  3           153.0269
+3                  4           142.3354
+4                  5           144.2971
+...              ...                ...
+24995          24996           118.0312
+24996          24997           120.1932
+24997          24998           118.2655
+24998          24999           132.2682
+24999          25000           124.8742
+
+[25000 rows x 2 columns]
+db6
+       db6.height.id  db6.height.height
+0                  1           65.78331
+1                  2           71.51521
+2                  3           69.39874
+3                  4           68.21660
+4                  5           67.78781
+...              ...                ...
+24995          24996           69.50215
+24996          24997           64.54826
+24997          24998           64.69855
+24998          24999           67.52918
+24999          25000           68.87761
+
+[25000 rows x 2 columns]
+result
+       db7.weight.weight  db6.height.height
+0               112.9925           65.78331
+1               136.4873           71.51521
+2               153.0269           69.39874
+3               142.3354           68.21660
+4               144.2971           67.78781
+...                  ...                ...
+24995           118.0312           69.50215
+24996           120.1932           64.54826
+24997           118.2655           64.69855
+24998           132.2682           67.52918
+24999           124.8742           68.87761
+
+[25000 rows x 2 columns]
+select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` ON `db7.weight.id`=`db6.height.id` WHERE `db7.weight.weight`<100
+db7
+       db7.weight.id  db7.weight.weight
+0                  1           112.9925
+1                  2           136.4873
+2                  3           153.0269
+3                  4           142.3354
+4                  5           144.2971
+...              ...                ...
+24995          24996           118.0312
+24996          24997           120.1932
+24997          24998           118.2655
+24998          24999           132.2682
+24999          25000           124.8742
+
+[25000 rows x 2 columns]
+db6
+       db6.height.id  db6.height.height
+0                  1           65.78331
+1                  2           71.51521
+2                  3           69.39874
+3                  4           68.21660
+4                  5           67.78781
+...              ...                ...
+24995          24996           69.50215
+24996          24997           64.54826
+24997          24998           64.69855
+24998          24999           67.52918
+24999          25000           68.87761
+
+[25000 rows x 2 columns]
+result
+     db7.weight.weight  db6.height.height
+0             97.90191           63.48115
+1             98.64133           65.61073
+2             84.35980           65.93895
+3             92.74955           69.13438
+4             93.99438           65.69989
+..                 ...                ...
+247           99.40058           67.50335
+248           94.40946           65.17339
+249           97.80735           66.56404
+250           97.99816           63.23624
+251           99.42378           65.11765
+
+[252 rows x 2 columns]
+select * FROM `db7.weight`
+db7
+       db7.weight.id  db7.weight.weight
+0                  1           112.9925
+1                  2           136.4873
+2                  3           153.0269
+3                  4           142.3354
+4                  5           144.2971
+...              ...                ...
+24995          24996           118.0312
+24996          24997           120.1932
+24997          24998           118.2655
+24998          24999           132.2682
+24999          25000           124.8742
+
+[25000 rows x 2 columns]
+result
+       db7.weight.id  db7.weight.weight
+0                  1           112.9925
+1                  2           136.4873
+2                  3           153.0269
+3                  4           142.3354
+4                  5           144.2971
+...              ...                ...
+24995          24996           118.0312
+24996          24997           120.1932
+24997          24998           118.2655
+24998          24999           132.2682
+24999          25000           124.8742
+
+[25000 rows x 2 columns]
+select * FROM `db7.weight` WHERE `db7.weight.weight`<100
+db7
+       db7.weight.id  db7.weight.weight
+0                  1           112.9925
+1                  2           136.4873
+2                  3           153.0269
+3                  4           142.3354
+4                  5           144.2971
+...              ...                ...
+24995          24996           118.0312
+24996          24997           120.1932
+24997          24998           118.2655
+24998          24999           132.2682
+24999          25000           124.8742
+
+[25000 rows x 2 columns]
+result
+     db7.weight.id  db7.weight.weight
+0               23           97.90191
+1              104           98.64133
+2              250           84.35980
+3              294           92.74955
+4              473           93.99438
+..             ...                ...
+247          24778           99.40058
+248          24836           94.40946
+249          24853           97.80735
+250          24869           97.99816
+251          24931           99.42378
+
+[252 rows x 2 columns]

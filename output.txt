@@ -1,128 +1,64 @@
-SELECT `db1.books.name` FROM `db1.books` 
+select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` ON `db7.weight.id`=`db6.height.id`
 result
-                             db1.books.name
-0                                   Lullaby
-1                            Adjustment Day
-2                                     Choke
-3                             The Rum Diary
-4                                Petersburg
-5                                 Dubliners
-6   A Portrait of the Artist as a Young Man
-7                                   Ulysses
-8                            Finnegans Wake
-9                                The Plague
-10                             The Stranger
-11                           Les Miserables
-12              The Hunchback of Notre-Dame
-13                                Hopscotch
-14            One Hundred Years of Solitude
-15              The Autumn of the Patriarch
-16              Love in the Time of Cholera
-17                   In Search of Lost Time
-SELECT `db1.books.name`, `db1.authors.country` FROM `db1.books` JOIN `db1.authors` ON `db1.books.author`=`db1.authors.id`
-result
-                             db1.books.name db1.authors.country
-0                                 Dubliners             Ireland
-1   A Portrait of the Artist as a Young Man             Ireland
-2                                   Ulysses             Ireland
-3                            Finnegans Wake             Ireland
-4                                Petersburg              Russia
-5                                   Lullaby                  US
-6                            Adjustment Day                  US
-7                                     Choke                  US
-8                             The Rum Diary                  US
-9                                 Hopscotch           Argentina
-10                           Les Miserables              France
-11              The Hunchback of Notre-Dame              France
-12            One Hundred Years of Solitude            Colombia
-13              The Autumn of the Patriarch            Colombia
-14              Love in the Time of Cholera            Colombia
-15                               The Plague              France
-16                             The Stranger              France
-17                   In Search of Lost Time              France
-SELECT `db1.books.name`, `db2.books.book_col` FROM `db1.books` JOIN `db2.books` ON `db1.books.name`=`db2.books.book_name`
-result
-                             db1.books.name  db2.books.book_col
-0                                   Lullaby                 140
-1                            Adjustment Day                 400
-2                                     Choke                 500
-3                             The Rum Diary                   0
-4                                Petersburg                  50
-5                                 Dubliners                  46
-6   A Portrait of the Artist as a Young Man                  78
-7                                   Ulysses                 382
-8                            Finnegans Wake                  10
-9                                The Plague                 100
-10                             The Stranger                 324
-11                           Les Miserables                 765
-12              The Hunchback of Notre-Dame                 535
-13                                Hopscotch                 120
-14            One Hundred Years of Solitude                 464
-15              The Autumn of the Patriarch                 357
-16              Love in the Time of Cholera                 357
-17                   In Search of Lost Time                  48
-SELECT `db1.books.name`, `db1.authors.country`, `db2.books.book_col` FROM `db1.books` JOIN `db1.authors` ON `db1.books.author`=`db1.authors.id` JOIN `db2.books` ON `db1.books.name`=`db2.books.book_name`
-result
-                             db1.books.name db1.authors.country  db2.books.book_col
-0                                 Dubliners             Ireland                  46
-1   A Portrait of the Artist as a Young Man             Ireland                  78
-2                                   Ulysses             Ireland                 382
-3                            Finnegans Wake             Ireland                  10
-4                                Petersburg              Russia                  50
-5                                   Lullaby                  US                 140
-6                            Adjustment Day                  US                 400
-7                                     Choke                  US                 500
-8                             The Rum Diary                  US                   0
-9                                 Hopscotch           Argentina                 120
-10                           Les Miserables              France                 765
-11              The Hunchback of Notre-Dame              France                 535
-12            One Hundred Years of Solitude            Colombia                 464
-13              The Autumn of the Patriarch            Colombia                 357
-14              Love in the Time of Cholera            Colombia                 357
-15                               The Plague              France                 100
-16                             The Stranger              France                 324
-17                   In Search of Lost Time              France                  48
-SELECT `db1.books.name`, `db1.authors.country` FROM `db1.books` JOIN `db1.authors` ON `db1.books.author`=`db1.authors.id` WHERE `db1.authors.country`='US'
-result
-   db1.books.name db1.authors.country
-0         Lullaby                  US
-1  Adjustment Day                  US
-2           Choke                  US
-3   The Rum Diary                  US
-SELECT `db1.books.name`, `db1.authors.country`, `db2.books.book_col` FROM `db1.books` JOIN `db1.authors` ON `db1.books.author`=`db1.authors.id` JOIN `db2.books` ON `db1.books.name`=`db2.books.book_name` WHERE `db1.authors.country`='US'
-result
-   db1.books.name db1.authors.country  db2.books.book_col
-0         Lullaby                  US                 140
-1  Adjustment Day                  US                 400
-2           Choke                  US                 500
-3   The Rum Diary                  US                   0
-SELECT * FROM `db1.books` JOIN `db1.authors` ON `db1.books.author`=`db1.authors.id` JOIN `db2.books` ON `db1.books.name`=`db2.books.book_name`
-result
-    db1.authors.id        db1.authors.name db1.authors.country  ...  db2.books.id                      db2.books.book_name  db2.books.book_col
-0                1             James Joyce             Ireland  ...            11                                Dubliners                  46
-1                1             James Joyce             Ireland  ...            12  A Portrait of the Artist as a Young Man                  78
-2                1             James Joyce             Ireland  ...            13                                  Ulysses                 382
-3                1             James Joyce             Ireland  ...            14                           Finnegans Wake                  10
-4                2             Andrei Bely              Russia  ...            10                               Petersburg                  50
-5                3         Chuck Palahniuk                  US  ...             5                                  Lullaby                 140
-6                3         Chuck Palahniuk                  US  ...             8                           Adjustment Day                 400
-7                3         Chuck Palahniuk                  US  ...             7                                    Choke                 500
-8                4      Hunter S. Thompson                  US  ...             9                            The Rum Diary                   0
-9                5          Julio Cortazar           Argentina  ...             6                                Hopscotch                 120
-10               6             Victor Hugo              France  ...            16                           Les Miserables                 765
-11               6             Victor Hugo              France  ...            17              The Hunchback of Notre-Dame                 535
-12               7  Gabriel Garcia Marquez            Colombia  ...            18            One Hundred Years of Solitude                 464
-13               7  Gabriel Garcia Marquez            Colombia  ...            19              The Autumn of the Patriarch                 357
-14               7  Gabriel Garcia Marquez            Colombia  ...            20              Love in the Time of Cholera                 357
-15               8            Albert Camus              France  ...             4                               The Plague                 100
-16               8            Albert Camus              France  ...            15                             The Stranger                 324
-17               9           Marcel Proust              France  ...            21                   In Search of Lost Time                  48
+       db7.weight.weight  db6.height.height
+0               112.9925           65.78331
+1               136.4873           71.51521
+2               153.0269           69.39874
+3               142.3354           68.21660
+4               144.2971           67.78781
+...                  ...                ...
+24995           118.0312           69.50215
+24996           120.1932           64.54826
+24997           118.2655           64.69855
+24998           132.2682           67.52918
+24999           124.8742           68.87761
 
-[18 rows x 9 columns]
-SELECT `db1.books.name`, `db1.authors.country`, `db2.books.book_col` FROM `db1.books` JOIN `db1.authors` ON `db1.books.author`=`db1.authors.id` JOIN `db2.books` ON `db1.books.name`=`db2.books.book_name` WHERE `db1.authors.country`='US'GROUP BY `db2.books.book_col`
+[25000 rows x 2 columns]
+select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` ON `db7.weight.id`=`db6.height.id` WHERE `db7.weight.weight`<100
 result
-   db1.books.name db1.authors.country  db2.books.book_col
-0   The Rum Diary                  US                   0
-1         Lullaby                  US                 140
-2  Adjustment Day                  US                 400
-3           Choke                  US                 500
+     db7.weight.weight  db6.height.height
+0             97.90191           63.48115
+1             98.64133           65.61073
+2             84.35980           65.93895
+3             92.74955           69.13438
+4             93.99438           65.69989
+..                 ...                ...
+247           99.40058           67.50335
+248           94.40946           65.17339
+249           97.80735           66.56404
+250           97.99816           63.23624
+251           99.42378           65.11765
+
+[252 rows x 2 columns]
+select * FROM `db7.weight`
+result
+       db7.weight.id  db7.weight.weight
+0                  1           112.9925
+1                  2           136.4873
+2                  3           153.0269
+3                  4           142.3354
+4                  5           144.2971
+...              ...                ...
+24995          24996           118.0312
+24996          24997           120.1932
+24997          24998           118.2655
+24998          24999           132.2682
+24999          25000           124.8742
+
+[25000 rows x 2 columns]
+select * FROM `db7.weight` WHERE `db7.weight.weight`<100
+result
+     db7.weight.id  db7.weight.weight
+0               23           97.90191
+1              104           98.64133
+2              250           84.35980
+3              294           92.74955
+4              473           93.99438
+..             ...                ...
+247          24778           99.40058
+248          24836           94.40946
+249          24853           97.80735
+250          24869           97.99816
+251          24931           99.42378
+
+[252 rows x 2 columns]

@@ -7,12 +7,12 @@ import data_test
 ERRORS = {1: 'Incorrect FROM', 2: 'Incorrect SELECT', 3: 'Incorrect WHERE'}
 
 
-def main(test_mode=1, in_file=0):
+def main(test_mode=1, in_file=1):
     if in_file:
         file = open("output.txt", "w")
         file.close()
     if test_mode:
-        where_data = data_test.test_error[3:]
+        where_data = data_test.huge_data_test
     else:
         print("Enter your SQL query")
         where_data = [input()]
@@ -54,7 +54,7 @@ def without_preprocessing(test_mode=1, in_file=1):
         file = open("output1.txt", "w")
         file.close()
     if test_mode:
-        where_data = data_test.test_data
+        where_data = data_test.huge_data_test
     else:
         print("Enter your SQL query")
         where_data = [input()]

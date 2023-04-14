@@ -78,3 +78,11 @@ test_error = ["SELECT db1.books.name FROM db1.books ",
               "SELECT `db1.books.name` FROM `db11.books` ",
               "SELECT `db1.books.name` FROM `db1.books` WHERE `db1.book2s.id`=1"
               ]
+
+huge_data_test = ['select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` '
+                  'ON `db7.weight.id`=`db6.height.id`',
+                  'select `db7.weight.weight`, `db6.height.height` FROM `db7.weight` JOIN `db6.height` '
+                  'ON `db7.weight.id`=`db6.height.id` WHERE `db7.weight.weight`<100',
+                  'select * FROM `db7.weight`',
+                  'select * FROM `db7.weight` WHERE `db7.weight.weight`<100'
+                  ]
